@@ -1,0 +1,101 @@
+<app-admin-layout></app-admin-layout>
+
+<main role="main" class="container">
+
+    <h2><i class="glyphicon glyphicon-log-in"></i>Register Staff</h2>
+    <br>
+
+  <div class="box">
+    <form #form="ngForm">
+
+     
+      <div>
+        <div class="form-group">
+          <label for="staffNo">Staff Number</label>
+          <input [(ngModel)]="registerUser.staffNo" name="staffNo" type="text" class="form-control"
+            placeholder="Staff Number" #staffNo="ngModel" autofocus required address2 ngModel>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="staffNo.invalid && (staffNo.dirty || staffNo?.touched)">
+          Enter a Valid Staff Number.
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="Fname">First Name</label>
+            <input [(ngModel)]="registerUser.fName" name="firstname" type="text" class="form-control"
+              placeholder="First name" #fName="ngModel" autofocus required fName ngModel>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="fName.invalid && (fName.dirty || fName?.touched)">
+            Please enter a valid first name.
+          </div>
+
+          <div class="form-group col">
+            <label for="surname">Last Name</label>
+            <input [(ngModel)]="registerUser.lName" type="text" name="lName" id="lName" class="form-control"
+              placeholder="Last name" #lName="ngModel" autofocus required lName ngModel>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="lName.invalid && (lName.dirty || sulNamername?.touched)">
+            Please enter a valid last name.
+          </div>
+
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input [(ngModel)]="registerUser.email" name="email" type="email" class="form-control" placeholder="Email"
+              #email="ngModel" autofocus required email ngModel>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="email.invalid && (email.dirty || email?.touched)">
+            Please enter a valid email.
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="contacts">Contact no.</label>
+            <input [(ngModel)]="registerUser.phoneNo" name="contacts" type="text" class="form-control"
+              placeholder="contact no" #phoneNo="ngModel" autofocus required phoneNo ngModel>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo?.touched)">
+            Please enter a valid contact no.
+          </div>
+
+        </div>
+        <div class="form-label-group">
+          <label for="address">Address</label>
+          <input [(ngModel)]="registerUser.address" name="address" type="text" class="form-control"
+            placeholder=" Main St" #address="ngModel" autofocus required address ngModel>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="address.invalid && (address.dirty || address?.touched)">
+          Please enter a valid address.
+        </div>
+
+
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input [(ngModel)]="registerUser.password" name="Password" type="password" class="form-control"
+            placeholder="Password" #password="ngModel" required minlength="8" maxlength="20" ngModel>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="password.invalid && (password.dirty || password?.touched)">
+          Please enter a valid password between 8 to 20 chars.
+        </div>
+        <div class="form-group">
+          <label for="ConfirmPassword">Confirm Password</label>
+          <input name="ConfirmPassword" appConfirmPassword="Password" type="password" class="form-control"
+            placeholder="confirm password" #ConfirmPassword="ngModel" autofocus required ConfirmPassword ngModel>
+        </div>
+
+        <div class="alert alert-danger" role="alert"
+          *ngIf="ConfirmPassword.invalid && (ConfirmPassword.error?.notEqual || ConfirmPassword?.touched)">
+          Password and Confirm Password does not match.
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-secondary btn-lg btn-block" (click)="registerUsers()">Register</button>
+
+        <br>
+      </div>
+      Existing User ? <a data toggle="modal" data-target=".bd-example-modal-lg" href="/login">Login</a>
+
+    </form>
+  </div>
+
+</main>

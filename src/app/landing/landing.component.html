@@ -1,0 +1,103 @@
+<!--Main Navigation-->
+<header class="intro-header">
+
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand waves-light" mdbWavesEffect href="#"><strong>DECLARATION</strong></a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        
+      </ul>
+      <!--
+      <form class="form-inline waves-light" mdbWavesEffect>
+        <div class="md-form">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </form>
+      -->
+    </links>
+  </mdb-navbar>
+
+  <!--Intro Section-->
+  <section class="view intro-2">
+    <div class="full-bg-img mask rgba-gradient">
+      <div class="container flex-center">
+        <div class="d-flex align-items-center content-height w-100">
+          <div class="row flex-center pt-5 mt-3 w-100">
+            <div class="col-md-6 text-center text-md-left mb-5">
+              <div class="white-text">
+                <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Declare and Secure Your Valuable Items Now! </h2>
+                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Welcome to the TUT Declaration System, a new way to secure valuable items in the digital age.
+                </h6>
+                <br>
+                
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xl-5 offset-xl-1">
+              <!--Form-->
+              <form class="form-signin" [formGroup]="adminForm" (ngSubmit) = "AdminLogIn()">
+              <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
+                <mdb-card-body>
+                  <!--Header-->
+                  <div class="text-center">
+                    <h3 class="white-text">
+                      <mdb-icon fas icon="user" class="text-white"></mdb-icon> Admin Login</h3>
+                    <hr class="hr-light">
+                  </div>
+                  <!--Body-->
+                  <div class="md-form">
+                    <mdb-icon fas icon="user" class="text-white active"></mdb-icon>
+                    <input type="text" class="text-white form-control" formControlName="username" name="username"class="form-control" [ngClass]="{'is-invalid':
+                    adminForm.get('username').touched && adminForm.get('username').invalid}" mdbInput>
+                    <label for="form3" class="text-white">Username</label>
+                   
+                  </div>
+                  <div class="text-center mt-4">
+                    <small *ngIf="adminForm.get('username').invalid && adminForm.get('username').touched" class="error" style="color:red;">
+                      <div *ngIf="adminForm.get('username').errors.required">username is required</div>
+                      
+                    </small>
+                  </div>
+            
+                  <div class="md-form">
+                    <mdb-icon fas icon="lock" class="text-white active"></mdb-icon>
+                    <input type="password" id="form4" class="text-white form-control" mdbInput formControlName="password" name="Password"class="form-control" placeholder="Password" [ngClass]="{'is-invalid':
+                    adminForm.get('username').touched}" autofocus>
+                    <label for="form4" class="text-white">Your password</label>
+                  </div>
+                  <div class="text-center mt-4">
+                    <small *ngIf="adminForm.get('password').invalid && adminForm.get('password').touched" class="error" style="color:red;">
+                      <div *ngIf="adminForm.get('password').errors.required">Password is required</div>
+                    </small>
+                  </div>
+      
+                  <div class="text-center mt-4">
+                    <button mdbBtn color="indigo" type="submit" routerLink="./view">Sign In</button>
+                    <small *ngIf="submitted" class="error">
+                        <div *ngIf="invalidLogin" class="error" style="color: red;">
+                            <div>Invalid credentials.</div>
+                        </div>
+                    </small>
+                    <hr class="hr-light mb-3 mt-4">
+
+                  
+
+                    
+                  </div>
+                </mdb-card-body>
+              </mdb-card>
+            </form>
+              <!--/.Form-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</header>
+<!--Main Navigation-->

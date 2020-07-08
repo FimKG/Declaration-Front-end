@@ -1,0 +1,149 @@
+<!--Main Navigation-->
+<header>
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed">
+
+        <a class="logo-wrapper waves-effect" routerLink="/">
+            <img src="https://icon-library.net/images/logo-icon-png/logo-icon-png-8.jpg" class="img-fluid" alt="">
+        </a>
+
+        <div class="list-group list-group-flush">
+
+            <a routerLink="/declare" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Declare New
+            </a>
+            <a routerLink="/view" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="user" class="mr-3"></mdb-icon>View Declared
+            </a>
+            <a routerLink="/register" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+              <mdb-icon fas icon="user" class="mr-3"></mdb-icon>Register
+           </a>
+           <a mdbBtn color="grey" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s"
+           (click)="basicModal.show()" mdbWavesEffect>Edit Stuff
+         </a>
+        </div>
+
+    </div>
+    <!-- Sidebar -->
+
+    <!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" routerLink="/">Declaration</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <!-- Links -->
+  
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+                <a routerLink='/' style="color:red"> Sign Out</a>
+              <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+              </div>
+          </a>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
+
+</header>
+<!--Main Navigation-->
+
+
+<!--edit staff-->
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <strong>
+          <h4 class="modal-title w-100" id="myModalLabel"> Declare Item</h4>
+        </strong>
+      </div>
+      <div class="modal-body">
+        <!-- Default form contact -->
+        <form class="text-center border border-light p-5" [formGroup]="adminForm" (ngSubmit)="declareItems()">
+
+          <!-- Surname -->
+          <div class="text-center mt-4">
+            <small *ngIf="adminForm.get('surname').invalid && adminForm.get('surname').touched" class="error"
+              style="color:red;">
+              <div *ngIf="adminForm.get('surname').errors.required">Surname is required</div>
+              <div *ngIf="adminForm.get('surname').errors.pattern">Surname must be letters</div>
+            </small>
+          </div>
+          <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Surname"
+            formControlName="surname" [ngClass]="{'is-invalid':
+          adminForm.get('surname').touched && adminForm.get('surname').invalid}" mdbInput>
+
+          <!-- Initials -->
+          <div class="text-center mt-4">
+            <small *ngIf="adminForm.get('initials').invalid && adminForm.get('initials').touched" class="error"
+              style="color:red;">
+              <div *ngIf="adminForm.get('initials').errors.required">Initial/s is required</div>
+            </small>
+          </div>
+          <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Initials"
+            formControlName="initials"
+            [ngClass]="{'is-invalid': adminForm.get('initials').touched && adminForm.get('initials').invalid}" mdbInput>
+
+          <!-- Student Number-->
+          <div class="text-center mt-4">
+            <small *ngIf="adminForm.get('studentno').invalid && adminForm.get('studentno').touched" class="error"
+              style="color:red;">
+              <div *ngIf="adminForm.get('studentno').errors.required">Student number is required</div>
+              <div *ngIf="adminForm.get('studentno').errors.pattern">Provide numbers only</div>
+              <div *ngIf="adminForm.get('studentno').errors.minlength">Student number is less than 9 digits</div>
+              <div *ngIf="adminForm.get('studentno').errors.maxlength">Student number must be 9 digits</div>
+            </small>
+          </div>
+          <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Student Number"
+            formControlName="studentno" [ngClass]="{'is-invalid':
+          adminForm.get('studentno').touched && adminForm.get('studentno').invalid}" mdbInput>
+
+       
+
+          <!-- Serial Number -->
+          <div class="text-center mt-4">
+            <small *ngIf="adminForm.get('password').invalid && adminForm.get('password').touched" class="error"
+              style="color:red;">
+              <div *ngIf="adminForm.get('password').errors.required">Password is required</div>
+              <div *ngIf="adminForm.get('password').errors.minlength">Password must be greater than 7 digits</div>
+            </small>
+          </div>
+          <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Password"
+            formControlName="password" [ngClass]="{'is-invalid':
+          adminForm.get('password').touched && adminForm.get('password').invalid}" mdbInput>
+
+      
+          <!-- data-backdrop="static" data-keyboard="false" -->
+          <button [disabled]="loading || !adminForm.valid" mdbBtn color="primary" class="relative waves-light"
+            type="submit" mdbWavesEffect>Submit!</button>
+          <button mdbBtn color="secondary" class="waves-light" aria-label="Submit" type="reset"
+            mdbWavesEffect>Reset</button>
+        </form>
+        <!-- Default form contact -->
+      </div>
+
+    </div>
+  </div>
+</div>
